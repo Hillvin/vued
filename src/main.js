@@ -12,13 +12,15 @@ Vue.use(vueRouter);
 // 3.0.2 导入路由规则对应的组件对象
 import home from './components/Home.vue';
 import shopcar from './components/shopcar/car.vue';
+import newslist from './components/news/newslist.vue';
 
 // 3.0.2 定义路由规则  路由对象
 var router1 = new vueRouter({
 	linkActiveClass:'mui-active', //改变路由激活时的class
 	routes:[
 		{path:'/home',component:home}, 
-		{path:'/shopcar',component:shopcar}
+		{path:'/shopcar',component:shopcar},
+		{path:'/news/newslist',component:newslist}
 	]
 	});
 
@@ -40,6 +42,15 @@ import '../statics/css/site.css';
 //7.0 将vue-resource 在vue中绑定，自动在vue对象实例上注入一个$http对象就可以使用ajax方法了
 import vueResource from 'vue-resource';
 Vue.use(vueResource);
+
+
+// 注册全局时间过滤器
+
+import moment from 'moment';
+Vue.filter('datefmt',function(input,fmtstring){
+	return moment(input).format(fmtstring)
+})
+
 
 // 5.0 利用Vue对象进行解析渲染
 new Vue({
