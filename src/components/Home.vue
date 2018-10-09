@@ -56,6 +56,9 @@
     import {
         Toast
     } from 'mint-ui';
+    // 导入公共 api 
+    import common from '../kits/common.js';
+
     export default {
         data() {
             return {
@@ -71,7 +74,7 @@
             getimgs() {
                 // 实现ajax 请求
                 // 1.0 确定url
-                var url = 'http://webhm.top:8899/api/getlunbo';
+                var url = common.apidomain + '/api/getlunbo';
                 // 2.0用$http.get()
                 this.$http.get(url).then(function(response) {
                     var data = response.body;

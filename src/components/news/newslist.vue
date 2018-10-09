@@ -20,7 +20,7 @@
 </template>
 <script>
 import {Toast} from 'mint-ui';
-
+import common from '../../kits/common.js';
 	export default {
 		data() {
 			return {
@@ -63,7 +63,7 @@ import {Toast} from 'mint-ui';
 				]
 
 				// 动态获取
-				// var url = 'http://webhm.top:8899/api/getnewslist';
+				// var url = common.apidomain + '/api/getnewslist';
 				// this.$http.get(url).then(function(res){
 				// 	var body = res.body;
 				// 	// 错误信息处理

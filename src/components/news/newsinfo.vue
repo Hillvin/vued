@@ -31,6 +31,7 @@
 	</div>
 </template>
 <script>
+import common from '../../kits/common.js';
 	export default {
 		data() {
 			return {
@@ -56,7 +57,7 @@
 		methods:{
 			getinfo(){
 				// 1.0 定义 url
-				var url = 'http://webhm.top:8899/api/getnew/'+this.id;
+				var url = common.apidomain +'/api/getnew/'+this.id;
 				// 2.0 
 				this.$http.get(url).then(function(res){
 					var body = res.body;
