@@ -1,19 +1,35 @@
-### vue 日期格式化   使用 momentjs   http://momentjs.cn/ 官网网址
-1. 使用过滤器实现日期格式化功能
-   使用私有过滤器Or全局过滤器   选择全局过滤器（该功能会在多个组件里使用）
-2. 如何注册全局过滤器？
-    Vue.filter('datefmt',function(input,fmtstring){})
-    且在入口文件main.js里注册
-3. 过滤器如何实现？  http://momentjs.cn/ 官网网址
-    在这里使用momentjs类库来实现日期的格式化功能
-    使用momentjs步骤
-    1）安装：npm install moment --save  安装 moment 包
-    2）导入 import moment from 'moment';
-    3）写法：写在过滤器方法体中写入如下代码实现日期格式化
-     Vue.filter('datefmt',function(input,fmtstring){
-          return moment（input）.format（fmtstring）
-     })
-    4）在需要使用datefmt这个过滤器的组件中如何使用？
-    {{ item.add_time | datafmt('YYYY-MM-DD HH:mm:ss') }}
-    
-       
+### vue 资讯详情
+1. main.js 配置路由
+    import newsinfo from './components/news/newsinfo.vue';
+    {path:'/news/newsinfo/:id',component:newsinfo}
+2. newslist.vue  <a></a>改为<router-link></router-link>
+    <router-link v-bind="{to:'/news/newsinfo/'+item.id}"></router-link>
+3. 页面传值
+    data(){
+			return {
+				id:0
+			}
+		},
+		created() {
+			// 获取url传入的id参数赋值给data中的id属性，请求对应的内容详情
+			// 注意  this.$route.params.id;  里的 id 要与 main.js里的{path:'/news/newsinfo/:id',component:newsinfo} :id 对应
+			// 若为 ：id1 则为 this.$route.params.id1
+			//页面传值
+			this.id = this.$route.params.id;
+		},
+
+### vue 资讯详情 内容展示
+1. 设计页面静态结构，没有使用任何UI控件,都是自己写的样式
+2. 调用vue-resource 来请求服务器的数据
+    2.1 地址： http://webhm.top:8899/api/getnew/:newid   
+    2.2 方法：get()   写在 created()这个方法里
+        this.$http.get(url);
+3. 数据中有标签时利用 v-html 这个标签来解析详情数据，数据中没有标签时利用 v-html、v-text 这个标签来解析详情数据
+
+
+### vue 公共功能提取 - api域名统一提取到kits下的common.js中 
+1. 域名    http://webhm.top:8899
+	开发环境域名
+	测试环境域名
+	正式环境域名
+	域名会变，变的时候改动不好改，要改很多处，统一提取出来以后改变域名时很好改，只需配置文件即可

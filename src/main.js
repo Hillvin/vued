@@ -13,14 +13,16 @@ Vue.use(vueRouter);
 import home from './components/Home.vue';
 import shopcar from './components/shopcar/car.vue';
 import newslist from './components/news/newslist.vue';
+import newsinfo from './components/news/newsinfo.vue';
 
 // 3.0.2 定义路由规则  路由对象
 var router1 = new vueRouter({
 	linkActiveClass:'mui-active', //改变路由激活时的class
 	routes:[
-		{path:'/home',component:home}, 
-		{path:'/shopcar',component:shopcar},
-		{path:'/news/newslist',component:newslist}
+		{path:'/home',component:home}, //首页
+		{path:'/shopcar',component:shopcar},//购物车
+		{path:'/news/newslist',component:newslist},//新闻列表
+		{path:'/news/newsinfo/:id',component:newsinfo},//新闻详情
 	]
 	});
 

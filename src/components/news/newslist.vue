@@ -2,7 +2,7 @@
 	<div id='tmpl'>
 		<ul class="mui-table-view">
 			<li class="mui-table-view-cell mui-media" v-for="item in list">
-				<a href="javascript:;">
+				<router-link v-bind="{to:'/news/newsinfo/'+item.id}">
 					<img class="mui-media-object mui-pull-left" :src="item.img_url">
 					<div class="mui-media-body">
 						{{item.title}}
@@ -12,7 +12,7 @@
 						<span>发布时间：{{item.add_time | datefmt('YYYY-MM-DD HH:mm:ss') }}</span>
 						<span class="click">点击数：{{item.click}}</span>
 					</div>
-				</a>
+				</router-link>
 			</li>
 			
 		</ul>
@@ -45,18 +45,18 @@ import {Toast} from 'mint-ui';
 						"img_url":'http://00000000000000',
 					},
 					{
-						"id":'0001',
-						"title":'aaaaa',
+						"id":'0002',
+						"title":'bbbbb',
 						"add_time":'2019-06-25T11:15:25+08:00',
-						"zhaiyao":'AAAAA',
+						"zhaiyao":'BBBBB',
 						"click":'1',
 						"img_url":'http://00000000000000',
 					},
 					{
-						"id":'0001',
-						"title":'aaaaa',
+						"id":'0003',
+						"title":'ccccc',
 						"add_time":'2019-06-25T11:15:25+08:00',
-						"zhaiyao":'AAAAA',
+						"zhaiyao":'CCCCC',
 						"click":'1',
 						"img_url":'http://00000000000000',
 					}
